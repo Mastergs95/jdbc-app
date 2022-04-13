@@ -93,6 +93,7 @@ public class ExploringRowSets {
 
     }*/
 
+    
 /*    public static void main(String[] args) {
 
         try (JdbcRowSet jdbcRS = DBUtils.getJdbcRowSet("DeliveryService")) {
@@ -120,6 +121,7 @@ public class ExploringRowSets {
         }
     }*/
 
+
        /* public static void main(String[] args) {
 
         try (CachedRowSet cacheRS = DBUtils.getCacheRowSet("DeliveryService")) {
@@ -142,6 +144,7 @@ public class ExploringRowSets {
             e.printStackTrace();
         }
     }*/
+
 
     //INNER JOIN
    /* public static void main(String[] args) {
@@ -212,7 +215,7 @@ public class ExploringRowSets {
             partnersRS.execute(conn);
 
             DeliveryPartnerFilter customFilter=
-                    new DeliveryPartnerFilter(19,21,false,3,4);
+                    new DeliveryPartnerFilter(19,21,true,3,4);
 
             partnersRS.setFilter(customFilter);
 

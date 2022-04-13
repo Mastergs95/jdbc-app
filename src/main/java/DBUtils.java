@@ -4,6 +4,7 @@ import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBUtils {
@@ -64,6 +65,38 @@ public class DBUtils {
             e.printStackTrace();
         }
         return cacheRS;
+    }
+
+    public static PreparedStatement getInsertVehiclePS(Connection conn){
+
+        try{
+            return conn.prepareStatement("insert into delvehicles values(?,?,?,?)");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static boolean addToInsertVehiclePS(PreparedStatement ps, int id,
+                                               String color, String vehicleType,
+                                               String lPlate){
+        boolean addedQuery=false;
+
+        try{
+            ps.setInt(1,id);
+            ps.setString(2,color);
+            ps.setString(3,vehicleType);
+            ps.setString(4,lPlate);
+            ps.addBatch();
+
+            addedQuery=true;
+
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return addedQuery;
     }
 }
 
